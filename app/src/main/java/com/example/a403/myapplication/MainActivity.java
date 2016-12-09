@@ -67,12 +67,5 @@ public class MainActivity extends AppCompatActivity {
         if(radioButton3.isChecked()){
             imageView1.setImageResource(R.drawable.picture3);
         };
-
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 }
