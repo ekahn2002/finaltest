@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Switch switch1;
     Chronometer chronometer1;
     EditText editText1, editText2, editText3;
+    RadioGroup radio;
     RadioButton radioButton1, radioButton2, radioButton3;
     ImageView imageView1;
     Button button1, button2;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         editText1=(EditText)findViewById(R.id.editText1);
         editText2=(EditText)findViewById(R.id.editText2);
         editText3=(EditText)findViewById(R.id.editText3);
+        radio=(RadioGroup)findViewById(R.id.radio);
         radioButton1=(RadioButton)findViewById(R.id.radioButton1);
         radioButton2=(RadioButton)findViewById(R.id.radioButton2);
         radioButton3=(RadioButton)findViewById(R.id.radioButton3);
@@ -58,14 +61,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(radioButton1.isChecked()){
-            imageView1.setImageResource(R.drawable.picture1);
-        };
-        if(radioButton2.isChecked()){
-            imageView1.setImageResource(R.drawable.picture2);
-        };
-        if(radioButton3.isChecked()){
-            imageView1.setImageResource(R.drawable.picture3);
-        };
+        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(radioButton1.isChecked()){
+                    imageView1.setImageResource(R.drawable.picture1);
+                };
+                if(radioButton2.isChecked()){
+                    imageView1.setImageResource(R.drawable.picture2);
+                };
+                if(radioButton3.isChecked()){
+                    imageView1.setImageResource(R.drawable.picture3);
+                };
+            }
+        });
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
