@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,6 +78,50 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if(editText1.getText().toString().length() <=0 || editText2.getText().toString().length() <= 0 || editText3.getText().toString().length() <= 0){
+                    Toast.makeText(MainActivity.this, "인원을 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+
+                else {
+                    int adult = Integer.parseInt(editText1.getText().toString());
+                    int teen = Integer.parseInt(editText2.getText().toString());
+                    int child = Integer.parseInt(editText3.getText().toString());
+
+                    int number = adult + teen + child;
+                    int sum = adult*15000 + teen*12000 + child*8000;
+                    int discount1 =  sum - sum*5/100;
+                    int discount2 = sum - sum*10/100;
+                    int discount3 = sum - sum*20/100;
+
+                    if(radioButton1.isChecked()){
+                        textView4.setText(number);
+                        textView5.setText(discount1);
+                        textView6.setText(sum-discount1);
+                    }
+                    if(radioButton2.isChecked()){
+                        textView4.setText(number);
+                        textView5.setText(discount2);
+                        textView6.setText(sum-discount2);
+                    }
+                    if(radioButton3.isChecked()){
+                        textView4.setText(number);
+                        textView5.setText(discount3);
+                        textView6.setText(sum-discount3);
+                    }
+                    else {
+                        textView4.setText(number);
+                        textView5.setText(discount3);
+                        textView6.setText(sum-discount3);
+                    }
+                }
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
